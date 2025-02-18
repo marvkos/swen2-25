@@ -1,4 +1,4 @@
-package at.technikum.javafx;
+package at.technikum.javafx.view;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -7,7 +7,7 @@ import javafx.scene.control.Label;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class HelloController implements Initializable {
+public class MainView implements Initializable {
 
     private int counter = 0;
 

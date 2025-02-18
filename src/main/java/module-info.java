@@ -5,4 +5,6 @@ module at.technikum.javafx {
 
     opens at.technikum.javafx to javafx.fxml;
     exports at.technikum.javafx;
+    exports at.technikum.javafx.view;
+    opens at.technikum.javafx.view to javafx.fxml;
 }
