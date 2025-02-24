@@ -24,8 +24,8 @@
         </padding>
 
         <VBox alignment="CENTER" HBox.hgrow="ALWAYS">
-            <TextField />
-            <Button text="%search.button" />
+            <TextField fx:id="searchInput" />
+            <Button text="%search.button" onAction="#onSearch" />
         </VBox>
 
         <VBox HBox.hgrow="ALWAYS">
