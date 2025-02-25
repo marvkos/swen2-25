@@ -38,4 +38,8 @@ public class MainView implements Initializable {
         viewModel.search();
     }
 
+    @FXML
+    public void onHistoryClear() {
+        viewModel.clearHistory();
+    }
 }

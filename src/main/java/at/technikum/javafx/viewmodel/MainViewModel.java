@@ -30,6 +30,10 @@ public class MainViewModel {
         searchText.set("");
     }
 
+    public void clearHistory() {
+        searchHistory.clear();
+    }
+
     public String getSearchText() {
         return searchText.get();
     }

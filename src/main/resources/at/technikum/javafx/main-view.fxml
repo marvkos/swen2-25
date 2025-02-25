@@ -4,18 +4,15 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox
-        prefHeight="720"
-        prefWidth="1280"
-        xmlns:fx="http://javafx.com/fxml/1"
-        xmlns="http://javafx.com/javafx/17.0.12"
-        fx:controller="at.technikum.javafx.view.MainView">
+<VBox prefHeight="720" prefWidth="1280" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="at.technikum.javafx.view.MainView">
 
-    <MenuBar>
-        <Menu text="%menu.history">
-            <MenuItem text="%menu.clear" />
-        </Menu>
-    </MenuBar>
+    <VBox>
+        <MenuBar>
+            <Menu text="%menu.history">
+                <MenuItem text="%menu.clear" onAction="#onHistoryClear" />
+            </Menu>
+        </MenuBar>
+    </VBox>
 
     <HBox VBox.vgrow="ALWAYS">
 
@@ -25,7 +22,7 @@
 
         <VBox alignment="CENTER" HBox.hgrow="ALWAYS">
             <TextField fx:id="searchInput" />
-            <Button fx:id="searchButton" text="%search.button" onAction="#onSearch" />
+            <Button fx:id="searchButton" onAction="#onSearch" text="%search.button" />
         </VBox>
 
         <VBox HBox.hgrow="ALWAYS">
