@@ -25,13 +25,13 @@
 
         <VBox alignment="CENTER" HBox.hgrow="ALWAYS">
             <TextField fx:id="searchInput" />
-            <Button text="%search.button" onAction="#onSearch" />
+            <Button fx:id="searchButton" text="%search.button" onAction="#onSearch" />
         </VBox>
 
         <VBox HBox.hgrow="ALWAYS">
             <Label text="%history.heading" />
 
-            <ListView VBox.vgrow="ALWAYS" />
+            <ListView fx:id="searchHistoryList" VBox.vgrow="ALWAYS" />
         </VBox>
 
     </HBox>
