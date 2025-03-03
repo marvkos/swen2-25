@@ -20,10 +20,7 @@
             <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
         </padding>
 
-        <VBox alignment="CENTER" HBox.hgrow="ALWAYS">
-            <TextField fx:id="searchInput" />
-            <Button fx:id="searchButton" onAction="#onSearch" text="%search.button" />
-        </VBox>
+        <fx:include source="search-view.fxml" />
 
         <VBox HBox.hgrow="ALWAYS">
             <Label text="%history.heading" />

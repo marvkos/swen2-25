@@ -12,31 +12,20 @@ import java.util.ResourceBundle;
 
 public class MainView implements Initializable {
 
-    private final MainViewModel viewModel = new MainViewModel();
-
-    @FXML
-    private TextField searchInput;
-
-    @FXML
-    private Button searchButton;
+    private final MainViewModel viewModel;
 
     @FXML
     private ListView<String> searchHistoryList;
 
+    public MainView(MainViewModel viewModel) {
+        this.viewModel = viewModel;
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        searchInput.textProperty()
-                .bindBidirectional(viewModel.searchTextProperty());
-        searchButton.disableProperty()
-                .bind(viewModel.searchDisabledProperty());
-
         searchHistoryList.setItems(viewModel.getSearchHistory());
     }
 
-    @FXML
-    public void onSearch() {
-        viewModel.search();
-    }
 
     @FXML
     public void onHistoryClear() {
