@@ -6,13 +6,7 @@
 
 <VBox prefHeight="720" prefWidth="1280" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="at.technikum.javafx.view.MainView">
 
-    <VBox>
-        <MenuBar>
-            <Menu text="%menu.history">
-                <MenuItem text="%menu.clear" onAction="#onHistoryClear" />
-            </Menu>
-        </MenuBar>
-    </VBox>
+    <fx:include source="menu-view.fxml" />
 
     <HBox VBox.vgrow="ALWAYS">
 
@@ -22,11 +16,7 @@
 
         <fx:include source="search-view.fxml" />
 
-        <VBox HBox.hgrow="ALWAYS">
-            <Label text="%history.heading" />
-
-            <ListView fx:id="searchHistoryList" VBox.vgrow="ALWAYS" />
-        </VBox>
+        <fx:include source="history-view.fxml" />
 
     </HBox>
 

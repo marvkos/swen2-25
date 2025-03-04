@@ -1,15 +1,19 @@
 package at.technikum.javafx.viewmodel;
 
+import at.technikum.javafx.event.EventManager;
+import at.technikum.javafx.service.SearchTermService;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class MainViewModelTest {
+class SearchViewModelTest {
 
     @Test
     void give_search_when_inputEmpty_then_buttonDisabled() {
         // Arrange
-        MainViewModel viewModel = new MainViewModel();
+        SearchViewModel viewModel = new SearchViewModel(
+                new SearchTermService(new EventManager())
+        );
 
         // Act
         viewModel.searchTextProperty().set("");
@@ -21,7 +25,9 @@ class MainViewModelTest {
     @Test
     void give_search_when_inputNotEmpty_then_buttonEnabled() {
         // Arrange
-        MainViewModel viewModel = new MainViewModel();
+        SearchViewModel viewModel = new SearchViewModel(
+                new SearchTermService(new EventManager())
+        );
 
         // Act
         viewModel.searchTextProperty().set("test search");

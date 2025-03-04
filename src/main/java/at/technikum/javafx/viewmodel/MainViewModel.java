@@ -9,18 +9,7 @@ import javafx.collections.ObservableList;
 
 public class MainViewModel {
 
-    private final ObservableList<String> searchHistory
-            = FXCollections.observableArrayList();
-
     public MainViewModel() {
 
-    }
-
-    public void clearHistory() {
-        searchHistory.clear();
-    }
-
-    public ObservableList<String> getSearchHistory() {
-        return searchHistory;
     }
 }

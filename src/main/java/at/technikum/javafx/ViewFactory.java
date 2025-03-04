@@ -1,16 +1,27 @@
 package at.technikum.javafx;
 
+import at.technikum.javafx.event.EventManager;
+import at.technikum.javafx.service.SearchTermService;
+import at.technikum.javafx.view.HistoryView;
 import at.technikum.javafx.view.MainView;
+import at.technikum.javafx.view.MenuView;
 import at.technikum.javafx.view.SearchView;
+import at.technikum.javafx.viewmodel.HistoryViewModel;
 import at.technikum.javafx.viewmodel.MainViewModel;
+import at.technikum.javafx.viewmodel.MenuViewModel;
 import at.technikum.javafx.viewmodel.SearchViewModel;
 
 public class ViewFactory {
 
     private static ViewFactory instance;
 
-    private ViewFactory() {
+    private final EventManager eventManager;
 
+    private final SearchTermService searchTermService;
+
+    private ViewFactory() {
+        this.eventManager = new EventManager();
+        this.searchTermService = new SearchTermService(eventManager);
     }
 
     public static ViewFactory getInstance() {
@@ -26,8 +37,21 @@ public class ViewFactory {
             return new MainView(new MainViewModel());
         }
 
+        if (MenuView.class == viewClass) {
+            return new MenuView(new MenuViewModel(searchTermService));
+        }
+
         if (SearchView.class == viewClass) {
-            return new SearchView(new SearchViewModel());
+            return new SearchView(new SearchViewModel(searchTermService));
+        }
+
+        if (HistoryView.class == viewClass) {
+            return new HistoryView(
+                    new HistoryViewModel(
+                            eventManager,
+                            searchTermService
+                    )
+            );
         }
 
         throw new IllegalArgumentException(

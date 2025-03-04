@@ -14,21 +14,12 @@ public class MainView implements Initializable {
 
     private final MainViewModel viewModel;
 
-    @FXML
-    private ListView<String> searchHistoryList;
-
     public MainView(MainViewModel viewModel) {
         this.viewModel = viewModel;
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        searchHistoryList.setItems(viewModel.getSearchHistory());
-    }
 
-
-    @FXML
-    public void onHistoryClear() {
-        viewModel.clearHistory();
     }
 }
