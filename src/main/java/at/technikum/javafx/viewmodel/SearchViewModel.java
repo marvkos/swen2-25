@@ -23,10 +23,7 @@ public class SearchViewModel {
     }
 
     public void search() {
-        // add search term to history...
-        // searchHistory.add(searchText.get());
         this.searchTermService.add(searchText.get());
-        // fire search Term change event
 
         // notice: no view.clearSearch()
         searchText.set("");
