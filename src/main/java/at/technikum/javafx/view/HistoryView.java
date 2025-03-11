@@ -22,5 +22,7 @@ public class HistoryView implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         searchHistoryList.setItems(viewModel.getSearchHistory());
+        viewModel.selectedItemProperty()
+                .bind(searchHistoryList.getSelectionModel().selectedItemProperty());
     }
 }

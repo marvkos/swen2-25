@@ -42,7 +42,12 @@ public class ViewFactory {
         }
 
         if (SearchView.class == viewClass) {
-            return new SearchView(new SearchViewModel(searchTermService));
+            return new SearchView(
+                    new SearchViewModel(
+                            eventManager,
+                            searchTermService
+                    )
+            );
         }
 
         if (HistoryView.class == viewClass) {

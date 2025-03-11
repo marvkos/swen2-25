@@ -12,6 +12,7 @@ class SearchViewModelTest {
     void give_search_when_inputEmpty_then_buttonDisabled() {
         // Arrange
         SearchViewModel viewModel = new SearchViewModel(
+                new EventManager(),
                 new SearchTermService(new EventManager())
         );
 
@@ -26,6 +27,7 @@ class SearchViewModelTest {
     void give_search_when_inputNotEmpty_then_buttonEnabled() {
         // Arrange
         SearchViewModel viewModel = new SearchViewModel(
+                new EventManager(),
                 new SearchTermService(new EventManager())
         );
 

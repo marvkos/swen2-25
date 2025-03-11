@@ -1,5 +1,7 @@
 package at.technikum.javafx.viewmodel;
 
+import at.technikum.javafx.event.EventManager;
+import at.technikum.javafx.event.Events;
 import at.technikum.javafx.service.SearchTermService;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
@@ -7,6 +9,8 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 public class SearchViewModel {
+
+    private final EventManager eventManager;
 
     private final SearchTermService searchTermService;
 
@@ -16,10 +20,18 @@ public class SearchViewModel {
     private final BooleanProperty searchDisabled
             = new SimpleBooleanProperty(true);
 
-    public SearchViewModel(SearchTermService searchTermService) {
+    public SearchViewModel(
+            EventManager eventManager,
+            SearchTermService searchTermService
+    ) {
+        this.eventManager = eventManager;
         this.searchTermService = searchTermService;
 
         this.searchDisabled.bind(searchText.isEmpty());
+
+        this.eventManager.subscribe(
+                Events.SEARCH_TERM_SELECTED, this::onSearchTermSelected
+        );
     }
 
     public void search() {
@@ -27,6 +39,15 @@ public class SearchViewModel {
 
         // notice: no view.clearSearch()
         searchText.set("");
+    }
+
+    public void onSearchTermSelected(String message) {
+        if (null == message) {
+            this.searchText.set("");
+            return;
+        }
+
+        this.searchText.set(message);
     }
 
     public String getSearchText() {
