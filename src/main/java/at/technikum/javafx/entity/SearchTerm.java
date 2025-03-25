@@ -1,9 +1,14 @@
 package at.technikum.javafx.entity;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
 import java.time.LocalDateTime;
 
+@Entity
 public class SearchTerm {
 
+    @Id
     private String id;
 
     private String term;

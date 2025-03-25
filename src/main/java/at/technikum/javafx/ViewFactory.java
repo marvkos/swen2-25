@@ -1,6 +1,8 @@
 package at.technikum.javafx;
 
 import at.technikum.javafx.event.EventManager;
+import at.technikum.javafx.repository.SearchTermRepository;
+import at.technikum.javafx.repository.SearchTermRepositoryOrm;
 import at.technikum.javafx.service.SearchTermService;
 import at.technikum.javafx.view.HistoryView;
 import at.technikum.javafx.view.MainView;
@@ -17,11 +19,14 @@ public class ViewFactory {
 
     private final EventManager eventManager;
 
+    private final SearchTermRepository searchTermRepository;
+
     private final SearchTermService searchTermService;
 
     private ViewFactory() {
         this.eventManager = new EventManager();
-        this.searchTermService = new SearchTermService(eventManager);
+        this.searchTermRepository = new SearchTermRepositoryOrm();
+        this.searchTermService = new SearchTermService(eventManager, searchTermRepository);
     }
 
     public static ViewFactory getInstance() {

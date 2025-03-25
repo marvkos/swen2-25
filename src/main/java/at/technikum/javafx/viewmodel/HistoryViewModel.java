@@ -34,6 +34,8 @@ public class HistoryViewModel {
         this.eventManager.subscribe(
                 Events.SEARCH_TERMS_CHANGED, this::onSearchTermChanged
         );
+
+        this.searchHistory.addAll(searchTermService.getSearchTerms());
     }
 
     private void onSelectedItemChanged(Observable observable) {
