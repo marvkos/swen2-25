@@ -1,13 +1,11 @@
 package at.technikum.javafx.service;
 
 import at.technikum.javafx.entity.SearchTerm;
-import at.technikum.javafx.event.EventListener;
 import at.technikum.javafx.event.EventManager;
 import at.technikum.javafx.event.Events;
 import at.technikum.javafx.repository.SearchTermRepository;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
