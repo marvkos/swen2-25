@@ -2,6 +2,7 @@ module at.technikum.javafx {
     requires java.net.http;
 
     requires javafx.controls;
+    requires javafx.web;
     requires javafx.fxml;
 
     requires com.fasterxml.jackson.core;

@@ -3,15 +3,11 @@ package at.technikum.javafx;
 import at.technikum.javafx.event.EventManager;
 import at.technikum.javafx.repository.SearchTermRepository;
 import at.technikum.javafx.repository.SearchTermRepositoryOrm;
+import at.technikum.javafx.service.MapService;
+import at.technikum.javafx.service.OpenRouteServiceApi;
 import at.technikum.javafx.service.SearchTermService;
-import at.technikum.javafx.view.HistoryView;
-import at.technikum.javafx.view.MainView;
-import at.technikum.javafx.view.MenuView;
-import at.technikum.javafx.view.SearchView;
-import at.technikum.javafx.viewmodel.HistoryViewModel;
-import at.technikum.javafx.viewmodel.MainViewModel;
-import at.technikum.javafx.viewmodel.MenuViewModel;
-import at.technikum.javafx.viewmodel.SearchViewModel;
+import at.technikum.javafx.view.*;
+import at.technikum.javafx.viewmodel.*;
 
 public class ViewFactory {
 
@@ -21,12 +17,15 @@ public class ViewFactory {
 
     private final SearchTermRepository searchTermRepository;
 
+    private final MapService mapService;
+
     private final SearchTermService searchTermService;
 
     private ViewFactory() {
         this.eventManager = new EventManager();
         this.searchTermRepository = new SearchTermRepositoryOrm();
-        this.searchTermService = new SearchTermService(eventManager, searchTermRepository);
+        this.mapService = new OpenRouteServiceApi();
+        this.searchTermService = new SearchTermService(eventManager, mapService, searchTermRepository);
     }
 
     public static ViewFactory getInstance() {
@@ -58,6 +57,15 @@ public class ViewFactory {
         if (HistoryView.class == viewClass) {
             return new HistoryView(
                     new HistoryViewModel(
+                            eventManager,
+                            searchTermService
+                    )
+            );
+        }
+
+        if (MapView.class == viewClass) {
+            return new MapView(
+                    new MapViewModel(
                             eventManager,
                             searchTermService
                     )

@@ -18,6 +18,8 @@
 
         <fx:include source="history-view.fxml" />
 
+        <fx:include source="map-view.fxml" />
+
     </HBox>
 
 </VBox>

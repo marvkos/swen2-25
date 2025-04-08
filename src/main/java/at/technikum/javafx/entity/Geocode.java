@@ -1,6 +1,15 @@
-package at.technikum.javafx.dto;
+package at.technikum.javafx.entity;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+
+@Entity
 public class Geocode {
+
+    @Id
+    @GeneratedValue
+    private int id;
 
     private String text;
 

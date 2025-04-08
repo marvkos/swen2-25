@@ -1,7 +1,6 @@
 package at.technikum.javafx.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
 
@@ -14,6 +13,9 @@ public class SearchTerm {
     private String term;
 
     private LocalDateTime firstSearched;
+
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private Geocode geocode;
 
     public String getId() {
         return id;
@@ -37,5 +39,13 @@ public class SearchTerm {
 
     public void setFirstSearched(LocalDateTime firstSearched) {
         this.firstSearched = firstSearched;
+    }
+
+    public Geocode getGeocode() {
+        return geocode;
+    }
+
+    public void setGeocode(Geocode geocode) {
+        this.geocode = geocode;
     }
 }

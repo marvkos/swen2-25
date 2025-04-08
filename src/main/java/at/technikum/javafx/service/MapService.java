@@ -1,6 +1,6 @@
 package at.technikum.javafx.service;
 
-import at.technikum.javafx.dto.Geocode;
+import at.technikum.javafx.entity.Geocode;
 
 import java.util.Optional;
 

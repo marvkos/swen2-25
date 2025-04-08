@@ -1,6 +1,6 @@
 package at.technikum.javafx.service;
 
-import at.technikum.javafx.dto.Geocode;
+import at.technikum.javafx.entity.Geocode;
 import at.technikum.javafx.service.openrouteservice.GeocodeSearchResponse;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -30,7 +30,7 @@ public class OpenRouteServiceApi implements MapService {
 
     @Override
     public Optional<Geocode> findGeocode(String text) {
-        String uri = String.format(GEOCODE_SEARCH_URI, API_KEY, text);
+        String uri = String.format(GEOCODE_SEARCH_URI, API_KEY, text.replace(" ", "%20"));
 
         try {
             HttpRequest request = HttpRequest.newBuilder()
