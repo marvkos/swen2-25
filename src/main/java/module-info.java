@@ -4,6 +4,7 @@ module at.technikum.javafx {
     requires javafx.controls;
     requires javafx.web;
     requires javafx.fxml;
+    requires javafx.swing;
 
     requires com.fasterxml.jackson.core;
     requires com.fasterxml.jackson.annotation;
@@ -11,6 +12,7 @@ module at.technikum.javafx {
 
     requires jakarta.persistence;
     requires org.hibernate.orm.core;
+    requires java.desktop;
 
     opens at.technikum.javafx to javafx.fxml;
     opens at.technikum.javafx.view to javafx.fxml;
@@ -21,4 +23,6 @@ module at.technikum.javafx {
     exports at.technikum.javafx;
     exports at.technikum.javafx.view;
     exports at.technikum.javafx.viewmodel;
+    exports at.technikum.javafx.provider;
+    exports at.technikum.javafx.service;
 }

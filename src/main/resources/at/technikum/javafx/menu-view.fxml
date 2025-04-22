@@ -9,5 +9,8 @@
         <Menu text="%menu.history">
             <MenuItem text="%menu.clear" onAction="#onHistoryClear" />
         </Menu>
+        <Menu text="%menu.export">
+            <MenuItem text="%menu.map" onAction="#onMapExport" />
+        </Menu>
     </MenuBar>
 </VBox>

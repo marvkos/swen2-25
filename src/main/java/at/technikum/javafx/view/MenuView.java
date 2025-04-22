@@ -24,4 +24,9 @@ public class MenuView implements Initializable {
     public void onHistoryClear() {
         viewModel.clearHistory();
     }
+
+    @FXML
+    public void onMapExport() {
+        viewModel.exportMap();
+    }
 }
