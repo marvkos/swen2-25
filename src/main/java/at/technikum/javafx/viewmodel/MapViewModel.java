@@ -9,9 +9,7 @@ import at.technikum.javafx.service.SearchTermService;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.web.WebEngine;
 
-import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
-import java.io.File;
 
 public class MapViewModel {
 

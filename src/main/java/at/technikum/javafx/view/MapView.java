@@ -6,12 +6,16 @@ import javafx.fxml.Initializable;
 import javafx.scene.image.WritableImage;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.function.Consumer;
 
 public class MapView implements Initializable {
+
+    private static final Logger LOGGER = LogManager.getLogger();
 
     private final MapViewModel viewModel;
 
@@ -29,6 +33,8 @@ public class MapView implements Initializable {
         viewModel.setSnapshotProvider(this::onSnapShot);
 
         viewModel.init();
+
+        LOGGER.info("Map View initialized.");
     }
 
     private void onSnapShot(Consumer<WritableImage> writableImageConsumer) {

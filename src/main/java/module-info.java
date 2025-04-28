@@ -10,6 +10,8 @@ module at.technikum.javafx {
     requires com.fasterxml.jackson.annotation;
     requires com.fasterxml.jackson.databind;
 
+    requires org.apache.logging.log4j;
+
     requires jakarta.persistence;
     requires org.hibernate.orm.core;
     requires java.desktop;
