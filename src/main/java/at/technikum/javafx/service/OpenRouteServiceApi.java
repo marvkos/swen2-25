@@ -13,16 +13,16 @@ import java.util.Optional;
 
 public class OpenRouteServiceApi implements MapService {
 
-    private final static String API_KEY =
-            "";
-
     private final static String GEOCODE_SEARCH_URI =
             "https://api.openrouteservice.org/geocode/search?api_key=%s&text=%s";
 
+
+    private final ConfigManager configManager;
     private final HttpClient client;
     private final ObjectMapper objectMapper;
 
-    public OpenRouteServiceApi() {
+    public OpenRouteServiceApi(ConfigManager configManager) {
+        this.configManager = configManager;
         this.client = HttpClient.newHttpClient();
         this.objectMapper = new ObjectMapper()
                 .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
@@ -30,7 +30,11 @@ public class OpenRouteServiceApi implements MapService {
 
     @Override
     public Optional<Geocode> findGeocode(String text) {
-        String uri = String.format(GEOCODE_SEARCH_URI, API_KEY, text.replace(" ", "%20"));
+        String uri = String.format(
+                GEOCODE_SEARCH_URI,
+                this.configManager.get("api.key"),
+                text.replace(" ", "%20")
+        );
 
         try {
             HttpRequest request = HttpRequest.newBuilder()

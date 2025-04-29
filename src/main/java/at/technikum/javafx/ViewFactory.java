@@ -3,16 +3,15 @@ package at.technikum.javafx;
 import at.technikum.javafx.event.EventManager;
 import at.technikum.javafx.repository.SearchTermRepository;
 import at.technikum.javafx.repository.SearchTermRepositoryOrm;
-import at.technikum.javafx.service.ExporterService;
-import at.technikum.javafx.service.MapService;
-import at.technikum.javafx.service.OpenRouteServiceApi;
-import at.technikum.javafx.service.SearchTermService;
+import at.technikum.javafx.service.*;
 import at.technikum.javafx.view.*;
 import at.technikum.javafx.viewmodel.*;
 
 public class ViewFactory {
 
     private static ViewFactory instance;
+
+    private final ConfigManager configManager;
 
     private final EventManager eventManager;
 
@@ -25,9 +24,10 @@ public class ViewFactory {
     private final ExporterService exporterService;
 
     private ViewFactory() {
+        this.configManager = new ConfigManager();
         this.eventManager = new EventManager();
         this.searchTermRepository = new SearchTermRepositoryOrm();
-        this.mapService = new OpenRouteServiceApi();
+        this.mapService = new OpenRouteServiceApi(this.configManager);
         this.exporterService = new ExporterService();
         this.searchTermService = new SearchTermService(eventManager, mapService, searchTermRepository);
     }
